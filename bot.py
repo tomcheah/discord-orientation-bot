@@ -2,13 +2,13 @@
 import os 
 
 import discord 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 # intents
 intents = discord.Intents.default()
 intents.members = True
 
-load_dotenv()
+# load_dotenv()
 TOKEN = os.environ['DISCORD_TOKEN']
 GUILD = os.environ['DISCORD_GUILD']
 
