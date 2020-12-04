@@ -9,8 +9,8 @@ intents = discord.Intents.default()
 intents.members = True
 
 load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
-GUILD = os.getenv('DISCORD_GUILD')
+TOKEN = os.environ['DISCORD_TOKEN']
+GUILD = os.environ['DISCORD_GUILD']
 
 client = discord.Client(intents=intents)
 
