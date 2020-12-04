@@ -1,30 +1,29 @@
 # bot.py
-import os 
-
+import os, random
 import discord 
-# from dotenv import load_dotenv
+from discord.ext import commands
 
-# intents
-intents = discord.Intents.default()
-intents.members = True
-
-# load_dotenv()
+# Token and guild setup
 TOKEN = os.environ['DISCORD_TOKEN']
 GUILD = os.environ['DISCORD_GUILD']
 
-client = discord.Client(intents=intents)
+# bot setup
+intents = discord.Intents.all()
+bot = commands.Bot(command_prefix="!", intents=intents)
 
-@client.event
+# Events 
+@bot.event
 async def on_ready():
-    print(f'{client.user.name} has enrolled in {GUILD}!')
+    print(f'{bot.user.name} has enrolled in {GUILD}!')
 
-@client.event
+@bot.event
 async def on_member_join(member):
     await member.send(
         f'Congratulations {member.name}, you have been admitted to {GUILD}!'
     )
+    # set user role to undergraduatestudent
 
-@client.event
+@bot.event
 async def on_message(message):
     if message.author == client.user:
         return
@@ -33,4 +32,10 @@ async def on_message(message):
         response = "Hi, this is a test."
         await message.channel.send(response)
 
-client.run(TOKEN)
+# Commmands 
+@bot.command(name='test')
+async def test(ctx):
+    response = "Hi, this is a test."
+    await message.channel.send(response)
+
+bot.run(TOKEN)
