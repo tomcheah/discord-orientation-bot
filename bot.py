@@ -5,14 +5,19 @@ from discord.ext import commands
 
 # Token and guild setup
 TOKEN = os.environ['DISCORD_TOKEN']
-GUILD = os.environ['DISCORD_GUILD']
+GUILD_NAME = os.environ['DISCORD_GUILD']
 
 # constants
 DEFAULT_ROLE = 'undergraduate student'
+BOT_ID = 784307177203433482
+GUILD_ID = 189037684423917569
 
 # bot setup
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='!', intents=intents)
+
+# Get guild 
+college_guild = bot.get_guild(GUILD_ID)
 
 # Events 
 @bot.event
@@ -23,10 +28,11 @@ async def on_ready():
 @bot.event
 async def on_member_join(member):
     await member.send(
-        f'Congratulations {member.name}, you have been admitted to {GUILD}!'
+        f'Congratulations {member.name}, you have been admitted to {GUILD_NAME}!'
     )
+    bot_member = college_guild.get_member(BOT_ID)
     try:
-        await bot.add_roles(member, discord.utils.get(member.guild.roles, name=DEFAULT_ROLE)) 
+        await bot_member.add_roles(member, discord.utils.get(member.guild.roles, name=DEFAULT_ROLE)) 
     except Exception as e:
         # await ctx.send('Cannot assign role. Error: ' + str(e))
         print(str(e))
