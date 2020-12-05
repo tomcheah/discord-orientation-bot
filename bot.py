@@ -10,13 +10,12 @@ GUILD = os.environ['DISCORD_GUILD']
 # bot setup
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='!', intents=intents)
-activity = discord.Activity(name='CS lectures', type=discord.ActivityType.watching)
-await client.change_presence(activity=activity)
 
 # Events 
 @bot.event
 async def on_ready():
-    print(f'{bot.user.name} has enrolled in {GUILD}!')
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="CS Lectures"))
+    print(f'{bot.user.name} is ready for classes!')
 
 @bot.event
 async def on_member_join(member):
