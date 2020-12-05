@@ -26,7 +26,7 @@ async def on_member_join(member):
         f'Congratulations {member.name}, you have been admitted to {GUILD}!'
     )
     try:
-        await member.add_roles(discord.utils.get(member.guild.roles, name=DEFAULT_ROLE)) 
+        await bot.add_roles(member, discord.utils.get(member.guild.roles, name=DEFAULT_ROLE)) 
     except Exception as e:
         # await ctx.send('Cannot assign role. Error: ' + str(e))
         print(str(e))
