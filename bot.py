@@ -7,6 +7,9 @@ from discord.ext import commands
 TOKEN = os.environ['DISCORD_TOKEN']
 GUILD = os.environ['DISCORD_GUILD']
 
+# constants
+DEFAULT_ROLE = 'undergraduate student'
+
 # bot setup
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='!', intents=intents)
@@ -22,7 +25,7 @@ async def on_member_join(member):
     await member.send(
         f'Congratulations {member.name}, you have been admitted to {GUILD}!'
     )
-    # set user role to undergraduatestudent
+    await member.add_roles(member, DEFAULT_ROLE)
 
 # @bot.event
 # async def on_message(message):
