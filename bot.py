@@ -25,7 +25,7 @@ async def on_member_join(member):
     await member.send(
         f'Congratulations {member.name}, you have been admitted to {GUILD}!'
     )
-    await member.add_roles(member, DEFAULT_ROLE)
+    await bot.add_roles(member, DEFAULT_ROLE)
 
 # @bot.event
 # async def on_message(message):
