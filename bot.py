@@ -18,6 +18,8 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 
 # Get guild 
 college_guild = bot.get_guild(GUILD_ID)
+if college_guild == None: 
+    print("Couldn't find guild")
 
 # Events 
 @bot.event
@@ -30,7 +32,9 @@ async def on_member_join(member):
     await member.send(
         f'Congratulations {member.name}, you have been admitted to {GUILD_NAME}!'
     )
-    bot_member = college_guild.get_member(BOT_ID)
+    bot_member = bot.get_member(BOT_ID)
+    if bot_member == None:
+        print("Couldn't find mr. bot")
     try:
         await bot_member.add_roles(member, discord.utils.get(member.guild.roles, name=DEFAULT_ROLE)) 
     except Exception as e:
