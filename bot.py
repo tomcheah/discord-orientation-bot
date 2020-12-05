@@ -9,7 +9,9 @@ GUILD = os.environ['DISCORD_GUILD']
 
 # bot setup
 intents = discord.Intents.all()
-bot = commands.Bot(command_prefix="!", intents=intents)
+bot = commands.Bot(command_prefix='!', intents=intents)
+activity = discord.Activity(name='CS lectures', type=discord.ActivityType.watching)
+await client.change_presence(activity=activity)
 
 # Events 
 @bot.event
@@ -23,19 +25,24 @@ async def on_member_join(member):
     )
     # set user role to undergraduatestudent
 
-@bot.event
-async def on_message(message):
-    if message.author == client.user:
-        return
+# @bot.event
+# async def on_message(message):
+#     if message.author == bot.user:
+#         return
     
-    if message.content == 'test!':
-        response = "Hi, this is a test."
-        await message.channel.send(response)
+#     if message.content == 'test!':
+#         response = "Hi, this is a test."
+#         await message.channel.send(response)
 
 # Commmands 
-@bot.command(name='test')
-async def test(ctx):
-    response = "Hi, this is a test."
-    await message.channel.send(response)
+# @bot.command(name='test', pass_context=True)
+# async def test(ctx):
+#     print("Is this working?")
+#     response = "Hi, this is a test."
+#     await ctx.send(response)
+
+@bot.command(name='test', pass_context=True)
+async def _test(ctx, arg):
+    await ctx.send(arg)
 
 bot.run(TOKEN)
