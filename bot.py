@@ -32,7 +32,7 @@ async def on_member_join(member):
     await member.send(
         f'Congratulations {member.name}, you have been admitted to {GUILD_NAME}!'
     )
-    bot_member = bot.get_member(BOT_ID)
+    bot_member = bot.get_user(BOT_ID)
     if bot_member == None:
         print("Couldn't find mr. bot")
     try:
