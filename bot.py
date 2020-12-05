@@ -1,6 +1,6 @@
 # bot.py
 import os, random
-import discord 
+import discord
 from discord.ext import commands
 
 # Token and guild setup
@@ -25,7 +25,10 @@ async def on_member_join(member):
     await member.send(
         f'Congratulations {member.name}, you have been admitted to {GUILD}!'
     )
-    await member.add_roles(DEFAULT_ROLE)
+    try:
+        await member.add_roles(discord.utils.get(user.guild.roles, name=DEFAULT_ROLE)) 
+    except Exception as e:
+        await ctx.send('Cannot assign role. Error: ' + str(e))
 
 # @bot.event
 # async def on_message(message):
