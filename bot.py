@@ -5,7 +5,6 @@ from discord.ext import commands
 
 # Token and guild setup
 TOKEN = os.environ['DISCORD_TOKEN']
-GUILD_NAME = os.environ['DISCORD_GUILD']
 
 # constants
 DEFAULT_ROLE_ID = 322178691134128139
@@ -26,8 +25,10 @@ BURRITOS_URL_LIST = [
     'https://instantpoteats.com/wp-content/uploads/2019/11/instant-pot-burritos-square-4.jpg',
     'https://dinnerthendessert.com/wp-content/uploads/2018/08/Beef-Burrito.jpg',
     'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2013/2/14/0/FNK_breakfast-burrito_s4x3.jpg.rend.hgtvcom.826.620.suffix/1382542427230.jpeg',
+    'https://www.gannett-cdn.com/-mm-/c256be877cb5feb7b087db5c94efb4583aa6062e/c=5-0-1277-719/local/-/media/Phoenix/Phoenix/2014/04/15//1397603744000-chipotle-tofu-burrito.jpg',
+    'https://www.godairyfree.org/wp-content/uploads/2017/10/Vegan-Burgers-Burritos-Chipotle-and-Lime-Burrito-feature-1.jpg',
+    'https://s3-media0.fl.yelpcdn.com/bphoto/X24hfq87HN_YInOJXp8E_g/l.jpg',
 ]
-
 
 # bot setup
 intents = discord.Intents.all()
@@ -42,7 +43,7 @@ async def on_ready():
 @bot.event
 async def on_member_join(member):
     await member.send(
-        f'Congratulations {member.name}, you have been admitted to {GUILD_NAME}!'
+        f'Congratulations {member.name}, you have been admitted to {member.guild.name}!'
     )
     try:
         default_role = discord.utils.get(member.guild.roles, id=DEFAULT_ROLE_ID)
@@ -61,5 +62,5 @@ async def megaburrito(ctx):
 @bot.command(name='echo', pass_context=True)
 async def echo(ctx, arg):
     await ctx.send(arg)
-
+    
 bot.run(TOKEN)
