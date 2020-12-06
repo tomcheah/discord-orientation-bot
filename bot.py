@@ -5,10 +5,11 @@ from discord.ext import commands
 
 # Token and guild setup
 TOKEN = os.environ['DISCORD_TOKEN']
+DEFAULT_ROLE_ID = os.environ['DEFAULT_ROLE_ID']
+GUILD_ID = os.environ['GUILD_ID']
+print(type(GUILD_ID))
 
 # constants
-DEFAULT_ROLE_ID = 322178691134128139
-GUILD_ID = 189037684423917569
 BURRITOS_URL_LIST = [
     'https://www.theseasonedmom.com/wp-content/uploads/2018/02/The-Easiest-Burrito-Recipe-7.jpg',
     'https://thegirlonbloor.com/wp-content/uploads/2015/03/Pulled-Chicken-Burrito-2.jpg',
@@ -54,13 +55,22 @@ async def on_member_join(member):
         print('Successfully assigned ' + str(default_role) + ' to ' + str(member.name))
 
 # Commmands 
+@bot.command(name='echo', pass_context=True)
+async def echo(ctx, arg):
+    await ctx.send(arg)
+
+@bot.command(name='listmembers', pass_context=True)
+async def listmembers(ctx, arg):
+    # listmembers of a certain role 
+    # ex: !listmembers chancellor
+
 @bot.command(name='megaburrito', pass_context=True)
 async def megaburrito(ctx):
     burrito_url = BURRITOS_URL_LIST[random.randint(0, len(BURRITOS_URL_LIST)-1)]
     await ctx.send(burrito_url)
 
-@bot.command(name='echo', pass_context=True)
-async def echo(ctx, arg):
-    await ctx.send(arg)
-    
+@bot.command(name='welcome', pass_context=True)
+async def welcome(ctx, arg):
+    # !welcome @cuttles
+
 bot.run(TOKEN)
