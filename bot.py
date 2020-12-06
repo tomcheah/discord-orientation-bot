@@ -10,6 +10,24 @@ GUILD_NAME = os.environ['DISCORD_GUILD']
 # constants
 DEFAULT_ROLE_ID = 322178691134128139
 GUILD_ID = 189037684423917569
+BURRITOS_URL_LIST = [
+    'https://www.theseasonedmom.com/wp-content/uploads/2018/02/The-Easiest-Burrito-Recipe-7.jpg',
+    'https://thegirlonbloor.com/wp-content/uploads/2015/03/Pulled-Chicken-Burrito-2.jpg',
+    'https://www.thespruceeats.com/thmb/AAnECK7pIP9DrvVOFlM2CRRndWM=/4048x2696/filters:fill(auto,1)/vegetarian-bean-and-rice-burrito-recipe-3378550-hero-01-40ecbc08fcc84e80b8be853c1b779a13.jpg',
+    'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2018/10/16/0/DV2904_Korean-BBQ-Burrito_s4x3.jpg.rend.hgtvcom.826.620.suffix/1539714414867.jpeg',
+    'https://whatsinthepan.com/wp-content/uploads/2020/03/burrito-24.jpg',
+    'https://www.recipetineats.com/wp-content/uploads/2020/02/Chicken-Burritos_2.jpg',
+    'https://www.freshcravings.com/wp-content/uploads/2019/03/FC_recipe-burrito-1480x1480@2x.jpg',
+    'https://veganinthefreezer.com/wp-content/uploads/2020/06/slow-cooker-black-bean-burrito-1200-sp.jpg',
+    'https://www.cookingclassy.com/wp-content/uploads/2019/08/breakfast-burrito-01-500x500.jpg',
+    'https://pinchofyum.com/wp-content/uploads/Mega-Burritos-Feature-3.jpg',
+    'https://www.alsothecrumbsplease.com/wp-content/uploads/2018/01/Guacamole-Beef-Burrito-4-500x375.jpg',
+    'https://d2wtgwi3o396m5.cloudfront.net/recipe/18ad844d-2449-463e-9f52-7482cacc6a9b.jpeg?d=1408x1120',
+    'https://instantpoteats.com/wp-content/uploads/2019/11/instant-pot-burritos-square-4.jpg',
+    'https://dinnerthendessert.com/wp-content/uploads/2018/08/Beef-Burrito.jpg',
+    'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2013/2/14/0/FNK_breakfast-burrito_s4x3.jpg.rend.hgtvcom.826.620.suffix/1382542427230.jpeg',
+]
+
 
 # bot setup
 intents = discord.Intents.all()
@@ -35,14 +53,13 @@ async def on_member_join(member):
         print('Successfully assigned ' + str(default_role) + ' to ' + str(member.name))
 
 # Commmands 
-# @bot.command(name='test', pass_context=True)
-# async def test(ctx):
-#     print("Is this working?")
-#     response = "Hi, this is a test."
-#     await ctx.send(response)
+@bot.command(name='megaburrito', pass_context=True)
+async def megaburrito(ctx):
+    burrito_url = BURRITOS_URL_LIST[random.randint(0, len(BURRITOS_URL_LIST)-1)]
+    await ctx.send(burrito_url)
 
-@bot.command(name='test', pass_context=True)
-async def _test(ctx, arg):
+@bot.command(name='echo', pass_context=True)
+async def echo(ctx, arg):
     await ctx.send(arg)
 
 bot.run(TOKEN)
