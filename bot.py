@@ -59,18 +59,18 @@ async def on_member_join(member):
 async def echo(ctx, arg):
     await ctx.send(arg)
 
-@bot.command(name='listmembers', pass_context=True)
-async def listmembers(ctx, arg):
-    # listmembers of a certain role 
-    # ex: !listmembers chancellor
+# @bot.command(name='listmembers', pass_context=True)
+# async def listmembers(ctx, arg):
+#     # listmembers of a certain role 
+#     # ex: !listmembers chancellor
 
 @bot.command(name='megaburrito', pass_context=True)
 async def megaburrito(ctx):
     burrito_url = BURRITOS_URL_LIST[random.randint(0, len(BURRITOS_URL_LIST)-1)]
     await ctx.send(burrito_url)
 
-@bot.command(name='welcome', pass_context=True)
-async def welcome(ctx, arg):
-    # !welcome @cuttles
+# @bot.command(name='welcome', pass_context=True)
+# async def welcome(ctx, arg):
+#     # !welcome @cuttles
 
 bot.run(TOKEN)
