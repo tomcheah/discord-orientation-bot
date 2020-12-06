@@ -8,8 +8,7 @@ TOKEN = os.environ['DISCORD_TOKEN']
 GUILD_NAME = os.environ['DISCORD_GUILD']
 
 # constants
-DEFAULT_ROLE = 'undergraduate student'
-BOT_ID = 784307177203433482
+DEFAULT_ROLE_ID = 322178691134128139
 GUILD_ID = 189037684423917569
 
 # bot setup
@@ -28,13 +27,12 @@ async def on_member_join(member):
         f'Congratulations {member.name}, you have been admitted to {GUILD_NAME}!'
     )
     try:
-        role = discord.utils.get(member.guild.roles, id=322178691134128139)
-        print("This is the role")
-        print(role)
-        await member.add_roles(role)
+        default_role = discord.utils.get(member.guild.roles, id=DEFAULT_ROLE_ID)
+        await member.add_roles(default_role)
     except Exception as e:
-        # await ctx.send('Cannot assign role. Error: ' + str(e))
-        print(str(e))
+        print('Cannot assign role. Error: ' + str(e))
+    else: 
+        print('Successfully assigned ' + str(default_role) + ' to ' + str(member.name))
 
 # Commmands 
 # @bot.command(name='test', pass_context=True)
