@@ -29,7 +29,7 @@ async def on_member_join(member):
     )
     try:
         role = discord.utils.get(member.guild.roles, id="322178691134128139")
-        await bot.add_roles(member, role)
+        await member.add_roles(role)
     except Exception as e:
         # await ctx.send('Cannot assign role. Error: ' + str(e))
         print(str(e))
