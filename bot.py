@@ -5,9 +5,8 @@ from discord.ext import commands
 
 # Token and guild setup
 TOKEN = os.environ['DISCORD_TOKEN']
-DEFAULT_ROLE_ID = os.environ['DEFAULT_ROLE_ID']
-GUILD_ID = os.environ['GUILD_ID']
-print(type(GUILD_ID))
+DEFAULT_ROLE_ID = int(os.environ['DEFAULT_ROLE_ID'])
+GUILD_ID = int(os.environ['GUILD_ID'])
 
 # constants
 BURRITOS_URL_LIST = [
