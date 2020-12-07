@@ -1,14 +1,13 @@
-# bot.py
 import os, random
 import discord
 from discord.ext import commands
 
-# Token and guild setup
+# Environment variables setup
 TOKEN = os.environ['DISCORD_TOKEN']
 DEFAULT_ROLE_ID = int(os.environ['DEFAULT_ROLE_ID'])
 GUILD_ID = int(os.environ['GUILD_ID'])
 
-# constants
+# Constants
 BURRITOS_URL_LIST = [
     'https://www.theseasonedmom.com/wp-content/uploads/2018/02/The-Easiest-Burrito-Recipe-7.jpg',
     'https://thegirlonbloor.com/wp-content/uploads/2015/03/Pulled-Chicken-Burrito-2.jpg',
@@ -29,8 +28,26 @@ BURRITOS_URL_LIST = [
     'https://www.godairyfree.org/wp-content/uploads/2017/10/Vegan-Burgers-Burritos-Chipotle-and-Lime-Burrito-feature-1.jpg',
     'https://s3-media0.fl.yelpcdn.com/bphoto/X24hfq87HN_YInOJXp8E_g/l.jpg',
 ]
+DAD_JOKES = [
+    '6:30 is my favorite time of day, hands down.',
+    "Why shouldn't you wear glasses when you play football? Because it's a contact sport.",
+    "I took up origami for a while, but I gave it up because it was too much paperwork.",
+    "What does Alexander the Great and Winnie the Pooh have in common? They both have the same middle name.",
+    "I love my furniture. My recliner and I go way back.",
+    "You know Orion’s Belt? Big waist of space, huh?",
+    "I tell dad jokes. Sometimes he laughs.",
+    "If a child doesn't want to take a nap, are they guilty of resisting a rest?",
+    "My wife is really mad at the fact that I have no sense of direction. So I packed up my stuff and right!",
+    "I don't trust stairs. They're always up to something.",
+    "Did you hear the rumor about butter? Well, I'm not going to spread it!",
+    "Why don't eggs tell jokes? They'd crack each other up.",
+    "Why did the math book look so sad? Because of all of its problems!",
+    "I'm on a seafood diet. I see food and I eat it.",
+    "I made a pencil with two erasers. It was pointless.",
+    "I'm reading a book about anti-gravity. It's impossible to put down!",
+]
 
-# bot setup
+# Bot setup
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='!', intents=intents)
 
@@ -54,6 +71,11 @@ async def on_member_join(member):
         print('Successfully assigned ' + str(default_role) + ' to ' + str(member.name))
 
 # Commmands 
+@bot.command(name='dadjoke', pass_context=True)
+async def dad_joke(ctx):
+    dad_joke = DAD_JOKES[random.randint(0, len(DAD_JOKES)-1)]
+    await ctx.send(dad_joke)
+
 @bot.command(name='echo', pass_context=True)
 async def echo(ctx, arg):
     await ctx.send(arg)
