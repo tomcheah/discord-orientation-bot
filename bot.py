@@ -94,7 +94,7 @@ async def listmembers(ctx, *, role):
     for member in ctx.guild.members: 
         if guild_role in member.roles:
             if member.nick is None: 
-                list.members.append(member.name)
+                list_members.append(member.name)
             else:
                 list_members.append(member.nick)
     list_members_string = ', '.join(map(str, list_members))
