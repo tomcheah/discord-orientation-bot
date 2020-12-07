@@ -13,7 +13,6 @@ BURRITOS_URL_LIST = [
     'https://thegirlonbloor.com/wp-content/uploads/2015/03/Pulled-Chicken-Burrito-2.jpg',
     'https://www.thespruceeats.com/thmb/AAnECK7pIP9DrvVOFlM2CRRndWM=/4048x2696/filters:fill(auto,1)/vegetarian-bean-and-rice-burrito-recipe-3378550-hero-01-40ecbc08fcc84e80b8be853c1b779a13.jpg',
     'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2018/10/16/0/DV2904_Korean-BBQ-Burrito_s4x3.jpg.rend.hgtvcom.826.620.suffix/1539714414867.jpeg',
-    'https://whatsinthepan.com/wp-content/uploads/2020/03/burrito-24.jpg',
     'https://www.recipetineats.com/wp-content/uploads/2020/02/Chicken-Burritos_2.jpg',
     'https://www.freshcravings.com/wp-content/uploads/2019/03/FC_recipe-burrito-1480x1480@2x.jpg',
     'https://veganinthefreezer.com/wp-content/uploads/2020/06/slow-cooker-black-bean-burrito-1200-sp.jpg',
@@ -43,7 +42,10 @@ DAD_JOKES = [
     "Why don't eggs tell jokes? They'd crack each other up.",
     "Why did the math book look so sad? Because of all of its problems!",
     "I'm on a seafood diet. I see food and I eat it.",
+    "What’s an astronaut’s favorite part of a computer? The space bar.",
     "I made a pencil with two erasers. It was pointless.",
+    "What do you call a fake noodle? An impasta.",
+    "I could tell a joke about pizza, but it's a little cheesy.",
     "I'm reading a book about anti-gravity. It's impossible to put down!",
 ]
 
@@ -77,13 +79,22 @@ async def dad_joke(ctx):
     await ctx.send(dad_joke)
 
 @bot.command(name='echo', pass_context=True)
-async def echo(ctx, arg):
-    await ctx.send(arg)
+async def echo(ctx, *, msg):
+    await ctx.send(msg)
 
-# @bot.command(name='listmembers', pass_context=True)
-# async def listmembers(ctx, arg):
-#     # listmembers of a certain role 
-#     # ex: !listmembers chancellor
+@bot.command(name='listmembers', pass_context=True)
+async def listmembers(ctx, *, role):
+    # check if role exists 
+    guild_role = discord.utils.get(member.guild.roles, name=role)
+    if guild_role is None:
+        await ctx.send(role + " role doesn't exist. Please try again with an existing role.")
+
+    list_members = []
+    for member in ctx.guild.members: 
+        if guild_role in member.roles:
+            list_members.append(member.name)
+    list_members_string = ' '.join(map(str, list_members))
+    await ctx.send("Members who have the role " + role + ": " + list_members_string)
 
 @bot.command(name='megaburrito', pass_context=True)
 async def megaburrito(ctx):
