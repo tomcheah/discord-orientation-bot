@@ -85,7 +85,7 @@ async def echo(ctx, *, msg):
 @bot.command(name='listmembers', pass_context=True)
 async def listmembers(ctx, *, role):
     # check if role exists 
-    guild_role = discord.utils.get(member.guild.roles, name=role)
+    guild_role = discord.utils.get(ctx.guild.roles, name=role)
     if guild_role is None:
         await ctx.send(role + " role doesn't exist. Please try again with an existing role.")
 
