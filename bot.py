@@ -88,12 +88,13 @@ async def listmembers(ctx, *, role):
     guild_role = discord.utils.get(ctx.guild.roles, name=role)
     if guild_role is None:
         await ctx.send(role + " role doesn't exist. Please try again with an existing role.")
+        return
 
     list_members = []
     for member in ctx.guild.members: 
         if guild_role in member.roles:
-            list_members.append(member.name)
-    list_members_string = ' '.join(map(str, list_members))
+            list_members.append(member.nick)
+    list_members_string = ', '.join(map(str, list_members))
     await ctx.send("Members who have the role " + role + ": " + list_members_string)
 
 @bot.command(name='megaburrito', pass_context=True)
