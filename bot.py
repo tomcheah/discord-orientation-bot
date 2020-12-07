@@ -93,9 +93,12 @@ async def listmembers(ctx, *, role):
     list_members = []
     for member in ctx.guild.members: 
         if guild_role in member.roles:
-            list_members.append(member.nick)
+            if member.nick is None: 
+                list.members.append(member.name)
+            else:
+                list_members.append(member.nick)
     list_members_string = ', '.join(map(str, list_members))
-    await ctx.send("Members who have the role " + role + ": " + list_members_string)
+    await ctx.send("Members who have the " + role + " role: " + list_members_string)
 
 @bot.command(name='megaburrito', pass_context=True)
 async def megaburrito(ctx):
