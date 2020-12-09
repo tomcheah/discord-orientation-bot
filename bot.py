@@ -83,7 +83,7 @@ async def echo(ctx, *, msg):
     await ctx.send(msg)
 
 @bot.command(name='listmembers', pass_context=True)
-async def listmembers(ctx, *, role):
+async def list_members(ctx, *, role):
     # check if role exists 
     guild_role = discord.utils.get(ctx.guild.roles, name=role)
     if guild_role is None:
@@ -100,10 +100,24 @@ async def listmembers(ctx, *, role):
     list_members_string = ', '.join(map(str, list_members))
     await ctx.send("Members who have the " + role + " role: " + list_members_string)
 
+@bot.command(name='joinme', pass_context=True)
+async def joinme(ctx):
+    member = ctx.author 
+    if member.voice is None:
+        ctx.send("This command only works if you're connected to a voice channel. Please join a voice channel and try this command again.")
+    else:
+        await ctx.send(
+            f'{member.nick} is chilling in the {member.voice.channel.name}, come join!'
+        )
+
 @bot.command(name='megaburrito', pass_context=True)
 async def megaburrito(ctx):
     burrito_url = BURRITOS_URL_LIST[random.randint(0, len(BURRITOS_URL_LIST)-1)]
     await ctx.send(burrito_url)
+
+# @bot.command(name='remindme', pass_context=True)
+# async def remind(ctx):
+#     await ctx.send("hi")
 
 # @bot.command(name='welcome', pass_context=True)
 # async def welcome(ctx, arg):
