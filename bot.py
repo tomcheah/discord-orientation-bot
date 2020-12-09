@@ -107,7 +107,7 @@ async def joinme(ctx):
         await ctx.send("This command only works if you're connected to a voice channel. Please join a voice channel before running this command again.")
     else:
         await ctx.send(
-            f'{member} is chilling in the {member.voice.channel.name}, come join!'
+            f'{member.nick} is chilling in the {member.voice.channel.name}, come join!'
         )
 
 @bot.command(name='megaburrito', pass_context=True)
