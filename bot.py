@@ -104,7 +104,7 @@ async def list_members(ctx, *, role):
 async def joinme(ctx):
     member = ctx.author 
     if member.voice is None:
-        ctx.send("This command only works if you're connected to a voice channel. Please join a voice channel and try this command again.")
+        await ctx.send("This command only works if you're connected to a voice channel. Please join a voice channel and try this command again.")
     else:
         await ctx.send(
             f'{member.nick} is chilling in the {member.voice.channel.name}, come join!'
