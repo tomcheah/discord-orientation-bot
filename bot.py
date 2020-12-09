@@ -93,10 +93,7 @@ async def list_members(ctx, *, role):
     list_members = []
     for member in ctx.guild.members: 
         if guild_role in member.roles:
-            if member.nick is None: 
-                list_members.append(member.name)
-            else:
-                list_members.append(member.nick)
+            list_members.append(member.display_name)
     list_members_string = ', '.join(map(str, list_members))
     await ctx.send("Members who have the " + role + " role: " + list_members_string)
 
