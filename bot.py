@@ -73,7 +73,7 @@ async def on_member_join(member):
         print('Successfully assigned ' + str(default_role) + ' to ' + str(member.name))
 
 # Commmands 
-@bot.command(name='dadjoke', pass_context=True)
+@bot.command(name='dadjoke', pass_context=True,  aliases=['dadjokes', 'joke', 'jokes'])
 async def dad_joke(ctx):
     dad_joke = DAD_JOKES[random.randint(0, len(DAD_JOKES)-1)]
     await ctx.send(dad_joke)
@@ -108,7 +108,7 @@ async def join_me(ctx):
             f'{member.display_name} is chilling in the {member.voice.channel.name}, come join!'
         )
 
-@bot.command(name='megaburrito', pass_context=True)
+@bot.command(name='megaburrito', pass_context=True,  aliases=['burrito'])
 async def megaburrito(ctx):
     burrito_url = BURRITOS_URL_LIST[random.randint(0, len(BURRITOS_URL_LIST)-1)]
     await ctx.send(burrito_url)
