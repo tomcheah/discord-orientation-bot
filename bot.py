@@ -46,6 +46,7 @@ DAD_JOKES = [
     "I made a pencil with two erasers. It was pointless.",
     "What do you call a fake noodle? An impasta.",
     "I could tell a joke about pizza, but it's a little cheesy.",
+    "Why did the deer move to Utah? He wanted to live in Salt Lick City!"
     "I'm reading a book about anti-gravity. It's impossible to put down!",
 ]
 
