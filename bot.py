@@ -124,9 +124,7 @@ async def megaburrito(ctx, recipient: discord.User=None):
         await ctx.send(burrito_url)
         return
     else:
-        await recipient.send(
-            f'This is a reminder: {reminder}'
-        )
+        await recipient.send(burrito_url)
 
 @bot.command(name='remindme', aliases = ["remind_me", "reminder", "remind"], pass_context=True)
 async def remind_me(ctx, quantity : int, time_unit : str, *, reminder : str):
