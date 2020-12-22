@@ -118,9 +118,15 @@ async def join_me(ctx):
         )
 
 @bot.command(name='megaburrito', pass_context=True,  aliases=['burrito'])
-async def megaburrito(ctx):
+async def megaburrito(ctx, recipient: discord.User=None):
     burrito_url = BURRITOS_URL_LIST[random.randint(0, len(BURRITOS_URL_LIST)-1)]
-    await ctx.send(burrito_url)
+    if recipient is None:
+        await ctx.send(burrito_url)
+        return
+    else:
+        await recipient.send(
+            f'This is a reminder: {reminder}'
+        )
 
 @bot.command(name='remindme', aliases = ["remind_me", "reminder", "remind"], pass_context=True)
 async def remind_me(ctx, quantity : int, time_unit : str, *, reminder : str):
@@ -150,6 +156,11 @@ async def remind_me(ctx, quantity : int, time_unit : str, *, reminder : str):
     await author.send(
         f'This is a reminder: {reminder}'
     )
+
+# @bot.command(name='compliment', pass_context=True)
+# async def compliement(ctx, arg):
+#     # !compliment @cuttles
+# list of compliments 
 
 # @bot.command(name='welcome', pass_context=True)
 # async def welcome(ctx, arg):
