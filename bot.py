@@ -1,5 +1,5 @@
-import os, random
-import discord
+import asyncio
+import discord, os, random
 from discord.ext import commands
 
 # Environment variables setup
@@ -56,6 +56,7 @@ DAD_JOKES = [
     "How do you organize an outer space party? You planet.",
     "The shovel was a ground breaking invention.",
 ]
+TIME_UNITS = {"second": 1, "minute" : 60, "hour" : 3600, "day" : 86400, "week": 604800, "month": 2628000}
 
 # Bot setup
 intents = discord.Intents.all()
@@ -121,9 +122,34 @@ async def megaburrito(ctx):
     burrito_url = BURRITOS_URL_LIST[random.randint(0, len(BURRITOS_URL_LIST)-1)]
     await ctx.send(burrito_url)
 
-# @bot.command(name='remindme', pass_context=True)
-# async def remind_me(ctx):
-#     await ctx.send("hi")
+@bot.command(name='remindme', aliases = ["remind_me", "reminder", "remind"], pass_context=True)
+async def remind_me(ctx, quantity : int, time_unit : str, *, reminder : str):
+    """Sends you <reminder> when the time is up
+    Accepts: minutes, hours, days, weeks, month
+    Example:
+    !remindme 3 days say hi to Cuttles
+    Inspiration: https://github.com/Twentysix26/26-Cogs/blob/master/remindme/remindme.py"""
+    time_unit = time_unit.lower()
+    author = ctx.message.author
+    s = ""
+    if time_unit.endswith("s"):
+        time_unit = time_unit[:-1]
+        s = "s"
+    if time_unit not in TIME_UNITS:
+        await ctx.send(
+            f'Invalid time unit. Please use seconds, minutes, hours, days, weeks, or months.'
+        )
+        return 
+    if quantity < 1:
+        await ctx.send(f'The quantity of time units msut be greater than 0.')
+        return
+
+    seconds = TIME_UNITS[quantity] * quantity
+    await ctx.send(f'I will remind you in {str(quantity)} {time_unit + s}.')
+    await asyncio.sleep(seconds)
+    await member.send(
+        f'This is a reminder: {reminder}'
+    )
 
 # @bot.command(name='welcome', pass_context=True)
 # async def welcome(ctx, arg):
