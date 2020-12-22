@@ -27,6 +27,27 @@ BURRITOS_URL_LIST = [
     'https://www.godairyfree.org/wp-content/uploads/2017/10/Vegan-Burgers-Burritos-Chipotle-and-Lime-Burrito-feature-1.jpg',
     'https://s3-media0.fl.yelpcdn.com/bphoto/X24hfq87HN_YInOJXp8E_g/l.jpg',
 ]
+COMPLIMENTS = [
+    "You're an awesome friend.",
+    "You're a gift to those around you.",
+    "You are a smart cookie.",
+    "You are awesome!",
+    "I appreciate you.",
+    "I like your style.",
+    "I'm grateful to know you.",
+    "You've got a great sense of humor!",
+    "You're like a ray of sunshine on a really dreary day.",
+    "You're a very juicy burrito.",
+    "You bring out the best in other people.",
+    "It's impossible to not like you.",
+    "You have beautiful eyes.",
+    "You just have that kind of smile that makes everyone else happy too.",
+    "You're breathtaking.",
+    "You're charming.",
+    "Hanging out with you is always a blast.",
+    "You help me feel more joy in life.",
+    "Everything would be better if more people were like you!",
+]
 DAD_JOKES = [
     '6:30 is my favorite time of day, hands down.',
     "Why shouldn't you wear glasses when you play football? Because it's a contact sport.",
