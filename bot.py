@@ -144,7 +144,7 @@ async def remind_me(ctx, quantity : int, time_unit : str, *, reminder : str):
         await ctx.send(f'The quantity of time units msut be greater than 0.')
         return
 
-    seconds = TIME_UNITS[quantity] * quantity
+    seconds = TIME_UNITS[time_unit] * quantity
     await ctx.send(f'I will remind you in {str(quantity)} {time_unit + s}.')
     await asyncio.sleep(seconds)
     await member.send(
