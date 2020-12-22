@@ -37,6 +37,7 @@ DAD_JOKES = [
     "I tell dad jokes. Sometimes he laughs.",
     "If a child doesn't want to take a nap, are they guilty of resisting a rest?",
     "My wife is really mad at the fact that I have no sense of direction. So I packed up my stuff and right!",
+    "Why do trees have so many friends? They branch out.",
     "I don't trust stairs. They're always up to something.",
     "Did you hear the rumor about butter? Well, I'm not going to spread it!",
     "Why don't eggs tell jokes? They'd crack each other up.",
@@ -48,6 +49,12 @@ DAD_JOKES = [
     "I could tell a joke about pizza, but it's a little cheesy.",
     "Why did the deer move to Utah? He wanted to live in Salt Lick City!",
     "I'm reading a book about anti-gravity. It's impossible to put down!",
+    "How much does a hipster weigh? An instagram.",
+    "The energizer bunny went to jail. He was charged with battery.",
+    "What did daddy spider say to baby spider? You spend too much time on the web.", 
+    "Why did the tomato turn red? Because it saw the salad dressing.",
+    "How do you organize an outer space party? You planet.",
+    "The shovel was a ground breaking invention.",
 ]
 
 # Bot setup
