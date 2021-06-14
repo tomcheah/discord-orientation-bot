@@ -182,7 +182,7 @@ async def remind_me(ctx, quantity : int, time_unit : str, *, reminder : str):
     )
 
 @bot.command(name='compliment', pass_context=True)
-async def compliement(ctx, recipient: discord.User=None):
+async def compliment(ctx, recipient: discord.User=None):
     compliment = COMPLIMENTS[random.randint(0, len(COMPLIMENTS)-1)]
     if recipient is None:
         await ctx.send(compliment)
@@ -193,6 +193,20 @@ async def compliement(ctx, recipient: discord.User=None):
         )
         await ctx.author.send(
             f'''{recipient.display_name} has received this compliment:\n{compliment}'''
+        )
+
+@bot.command(name='sneeze', pass_context=True)
+async def sneeze(ctx, recipient: discord.User=None):
+    sneeze = "Achoo!"
+    if recipient is None:
+        await ctx.send(sneeze)
+        return
+    else:
+        await recipient.send(
+            f'''{ctx.author.display_name} has sneezed on you!'''
+        )
+        await ctx.author.send(
+            f'''{recipient.display_name} has received your sneeze.'''
         )
 
 # @bot.command(name='welcome', pass_context=True)
